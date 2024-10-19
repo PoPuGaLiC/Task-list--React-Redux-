@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-const Filter =(props) => {
-    
-    
+import { useDispatch, useSelector } from 'react-redux'
+const Filter = () => {
 
-    return(
+    const dispatch = useDispatch()
+    const filterID = useSelector(state => state.filter.filterID)
+    return (
         <div>
             <select
-             value={props.filter}
-             onChange={(event)=>{
-                props.setFilter(event.target.value)
-                props.dataFilter(event.target.value);
+                value={filterID}
+                onChange={(event) => {
+                    dispatch({ type: "CHANGE_FILTER", payload: event.target.value });
+                    dispatch({ type: "FILTER_TASK", payload: event.target.value });
                 }}>
                 <option
                     value={'date-start'}>

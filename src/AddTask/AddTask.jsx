@@ -1,18 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-const AddTask = (props)=>{
-    return(
+import { useDispatch, useSelector } from 'react-redux'
+const AddTask = () => {
+    const dispatch = useDispatch()
+    const newTask = useSelector(state => state.taskList.newTask)
+    const filterID = useSelector(state => state.filter.filterID)
+    return (
         <div>
-        <input
-        value={props.newTask}
-        onChange={(event)=>props.setNewTask(event.target.value)}/>
-        <button onClick={()=>{
-            if( props.newTask != ''){   
-                return props.dataFilter(props.filter, {id: crypto.randomUUID(), date: new Date(),  taskName: props.newTask})
-            }}}>
+            <input
+                value={newTask}
+                onChange={(event) => { dispatch({ type: "CHANGE_NEW_TASK", payload: event.target.value }) }} />
+            <button onClick={() => {
+                if (newTask != '') {
+                    dispatch({ type: "ADD_TASK", payload: { id: crypto.randomUUID(), date: new Date(), taskName: newTask } })
+                    dispatch({ type: "FILTER_TASK", payload: filterID });
+                }
+            }}>
                 Добавить
-        </button>
+            </button>
         </div>
     )
 }

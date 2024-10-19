@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+
+import { useSelector } from 'react-redux'
 import Task from '../Task/Task'
-const List =(props) => {
-    function deleteTask(id){
-        props.setTaskList(props.taskList.filter(el=> el.id!=id))
-    }
-    return(
+const List = () => {
+    const taskList = useSelector(state => state.taskList.taskList)
+    return (
         <div>
-            {props.taskList.map(el => <Task key={el.id} task={el} deleteTask={deleteTask}/>)}
+            {taskList.map(el => <Task key={el.id} task={el} />)}
         </div>
     )
 }
