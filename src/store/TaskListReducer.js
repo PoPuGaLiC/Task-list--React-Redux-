@@ -1,37 +1,22 @@
 
 const defaultState={
     taskList: [
-    {id:1, date:  new Date(), taskName:'Sleep'},
-    {id:2, date:new Date() ,  taskName:'Eat'}],
+    {id:1,taskName:'Тестовое задание', status: false},
+    {id:2, taskName:'Прекрасный код', status: true},
+    {id:3, taskName:'Покрытие тестами', status: false}],
     newTask: ''}
   
 export const TaskListReducer = (state = defaultState, action)=>{
     switch( action.type){
         case "ADD_TASK":
             return {...state, taskList: [...state.taskList,action.payload]}
-        case "DELETE_TASK":
-            return {...state, taskList: state.taskList.filter(el=> el.id!=action.payload)}
+            case "COMPLETE_TASK":
+                console.log(action.payload)
+                return {...state, taskList: [...state.taskList.filter(el=> el.id !== action.payload.id),action.payload]}
+        case "DELETE_COMPLETED_TASKS":
+            return {...state, taskList: state.taskList.filter(el=> el.status !== true)}
         case "CHANGE_NEW_TASK":
                 return {...state, newTask: action.payload}
-        case "FILTER_TASK":
-            switch(action.payload){
-                case 'date-start': 
-                    return {...state, taskList:[...state.taskList].sort((a,b)=> {
-                        return new Date(a.date).getTime() - new Date(b.date).getTime()
-                    })};
-                case 'date-end':
-                    return {...state, taskList:[...state.taskList].sort((a,b)=> {
-                        return new Date(b.date).getTime() - new Date(a.date).getTime()
-                    })};
-                case 'name-start':
-                    return {...state, taskList:[...state.taskList].sort((a, b) => {
-                        return a.taskName < b.taskName ? -1 : 1
-                    })};
-                case 'name-end':
-                    return {...state, taskList:[...state.taskList].sort((a, b) => {
-                        return a.taskName > b.taskName ? -1 : 1
-                    })};
-            }   
         default:
             return state
     }

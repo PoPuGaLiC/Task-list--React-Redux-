@@ -1,10 +1,10 @@
 import {createStore, combineReducers} from 'redux'
-import {TaskListReducer} from './TaskListReducer'
 import {FilterReducer} from './FilterReducer'
+import {TaskListReducer} from './TaskListReducer'
 
 const rootReducer = combineReducers({
     taskList: TaskListReducer,
-    filter: FilterReducer
+    filter: FilterReducer,
 })
 
 export const store = createStore(rootReducer)

@@ -1,0 +1,23 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 18px;
+    align-items: center;
+    color: #848484;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tabs>span {
+    padding: 10px;
+
+}
+
+.active{
+    border: solid 2px #b9b9b9;
+    border-radius: 5px;
+}

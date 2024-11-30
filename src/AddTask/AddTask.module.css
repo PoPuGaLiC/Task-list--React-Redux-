@@ -1,0 +1,51 @@
+.enter {
+    width: 30px;
+}
+
+.addTask {
+    display: flex;
+    width: 100%;
+    font-size: 36px;
+}
+
+.addTask>button {
+    display: flex;
+    align-items: center;
+    color: #e6e6e6;
+    padding: 0 20px;
+    font-size: 48px;
+}
+
+.addTask>input {
+    outline: none;
+    font-size: 36px;
+    margin: 0;
+    width: 800px;
+    line-height: 60px;
+    border: none;
+    background-color: #ffffff;
+}
+
+.addTask>input::placeholder {
+    font-style: italic;
+    font-size: 36px;
+    color: #e6e6e6;
+}
+
+.addTask>input::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: 36px;
+    color: #e6e6e6;
+}
+
+.addTask>input:-moz-placeholder {
+    font-style: italic;
+    font-size: 36px;
+    color: #e6e6e6;
+}
+
+.addTask>input:-ms-input-placeholder {
+    font-style: italic;
+    font-size: 36px;
+    color: #e6e6e6;
+}
